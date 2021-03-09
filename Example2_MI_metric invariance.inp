@@ -1,0 +1,32 @@
+DATA:
+file= 
+datafull.txt;
+VARIABLE: 
+names = 
+x11-x13 x21-x23 y11-y13 y21-y23;
+ANALYSIS: 
+estimator = MLM;
+MODEL: 
+lx1 by x11@1; 
+lx1 by x12 (LX2); 
+lx1 by x13 (LX3); 
+lx2 by x21@1; 
+lx2 by x22 (LX2); 
+lx2 by x23 (LX3); 
+ly1 by y11@1; 
+ly1 by y12 (LY2); 
+ly1 by y13 (LY3); 
+ly2 by y21@1; 
+ly2 by y22 (LY2); 
+ly2 by y23 (LY3); 
+x11 with x21; 
+x12 with x22; 
+x13 with x23; 
+y11 with y21; 
+y12 with y22; 
+y13 with y23; 
+lx1;ly1;
+lx1 with ly1;
+lx2;ly2;
+lx2 with ly2;
+

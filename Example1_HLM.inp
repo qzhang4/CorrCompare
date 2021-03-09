@@ -1,0 +1,14 @@
+DATA:
+file=datahlm.txt;
+VARIABLE: 
+names = 
+id x y member xt;
+WITHIN = x member xt;
+CLUSTER = id;
+ANALYSIS: 
+TYPE = TWOLEVEL;
+MODEL: 
+%WITHIN% 
+y ON x member@0 xt;
+%BETWEEN% 
+[y@0];
