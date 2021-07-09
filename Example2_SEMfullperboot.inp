@@ -1,0 +1,44 @@
+DATA:
+file= 
+datafull.txt;
+VARIABLE: 
+names = 
+x11-x13 x21-x23 y11-y13 y21-y23;
+ANALYSIS: 
+bootstrap = 5000;
+MODEL: 
+lx1 by x11@1; 
+lx1 by x12 (LX2); 
+lx1 by x13 (LX3); 
+lx2 by x21@1; 
+lx2 by x22 (LX2); 
+lx2 by x23 (LX3); 
+ly1 by y11@1; 
+ly1 by y12 (LY2); 
+ly1 by y13 (LY3); 
+ly2 by y21@1; 
+ly2 by y22 (LY2); 
+ly2 by y23 (LY3); 
+x11 with x21 (covx1); 
+x12 with x22 (covx2); 
+x13 with x23 (covx3); 
+y11 with y21 (covy1); 
+y12 with y22 (covy2); 
+y13 with y23 (covy3); 
+lx1 (varx1); 
+lx2 (varx2); 
+ly1 (vary1); 
+ly2 (vary2); 
+lx1 with lx2; 
+lx1 with ly1 (covxy1); 
+lx1 with ly2; 
+lx2 with ly1; 
+lx2 with ly2 (covxy2); 
+ly1 with ly2; 
+MODEL CONSTRAINT: 
+NEW (r1 r2 diff); 
+r1=covxy1/sqrt(varx1*vary1); 
+r2=covxy2/sqrt(varx2*vary2); 
+diff=r2-r1; 
+Output: 
+cinterval (bootstrap); 
