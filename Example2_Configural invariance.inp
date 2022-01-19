@@ -1,0 +1,33 @@
+TITLE: Examining configural invariance;
+DATA:
+file= 
+datamiss.txt;
+VARIABLE: 
+names = 
+x11-x13 x21-x23 y11-y13 y21-y23;
+Missing are all (-9999);
+ANALYSIS: 
+estimator = MLR;
+MODEL: 
+lx1 by x11@1; 
+lx1 by x12; 
+lx1 by x13; 
+lx2 by x21@1; 
+lx2 by x22; 
+lx2 by x23; 
+ly1 by y11@1; 
+ly1 by y12; 
+ly1 by y13; 
+ly2 by y21@1; 
+ly2 by y22; 
+ly2 by y23; 
+x11 with x21; 
+x12 with x22; 
+x13 with x23; 
+y11 with y21; 
+y12 with y22; 
+y13 with y23; 
+lx1;ly1;
+lx1 with ly1;
+lx2;ly2;
+lx2 with ly2;
